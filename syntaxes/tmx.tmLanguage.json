@@ -1,0 +1,69 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "TMX",
+	"patterns": [
+		{
+			"include": "#csv-data"
+		},
+		{
+			"include": "#xml"
+		}
+	],
+	"repository": {
+		"csv-data": {
+			"begin": "<data[^>]*encoding\\s*=\\s*[\"']csv[\"'][^>]*>",
+			"beginCaptures": {
+				"0": {
+					"name": "meta.tag.xml"
+				}
+			},
+			"end": "</data>",
+			"endCaptures": {
+				"0": {
+					"name": "meta.tag.xml"
+				}
+			},
+			"patterns": [
+				{
+					"match": ",",
+					"name": "punctuation.separator.comma.csv"
+				}
+			]
+		},
+		"xml": {
+			"patterns": [
+				{
+					"begin": "<\\?",
+					"end": "\\?>",
+					"name": "comment.block.xml"
+				},
+				{
+					"begin": "<!--",
+					"end": "-->",
+					"name": "comment.block.xml"
+				},
+				{
+					"begin": "<(?!data[^>]*encoding\\s*=\\s*[\"']csv[\"'])",
+					"end": ">",
+					"name": "meta.tag.xml",
+					"patterns": [
+						{
+							"match": "\\b([a-zA-Z][a-zA-Z0-9-]*)\\s*=",
+							"name": "entity.name.attribute.xml"
+						},
+						{
+							"match": "\"[^\"]*\"",
+							"name": "string.quoted.double.xml"
+						},
+						{
+							"match": "'[^']*'",
+							"name": "string.quoted.single.xml"
+						}
+					]
+				}
+			]
+		}
+	},
+	"scopeName": "text.xml.tmx"
+}
+

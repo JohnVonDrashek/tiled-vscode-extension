@@ -1,0 +1,69 @@
+{
+	"$schema": "vscode://schemas/color-theme",
+	"name": "TMX Colors",
+	"colors": {},
+	"tokenColors": [
+		{
+			"scope": "constant.numeric.tile0",
+			"settings": {
+				"foreground": "#808080",
+				"fontStyle": "italic"
+			}
+		},
+		{
+			"scope": "constant.numeric.tile1",
+			"settings": {
+				"foreground": "#569cd6"
+			}
+		},
+		{
+			"scope": "constant.numeric.tile2",
+			"settings": {
+				"foreground": "#4ec9b0"
+			}
+		},
+		{
+			"scope": "constant.numeric.tile3",
+			"settings": {
+				"foreground": "#dcdcaa"
+			}
+		},
+		{
+			"scope": "constant.numeric.tile4",
+			"settings": {
+				"foreground": "#ce9178"
+			}
+		},
+		{
+			"scope": "constant.numeric.tile5",
+			"settings": {
+				"foreground": "#d7ba7d"
+			}
+		},
+		{
+			"scope": "constant.numeric.tile6",
+			"settings": {
+				"foreground": "#c586c0"
+			}
+		},
+		{
+			"scope": "constant.numeric.tile7",
+			"settings": {
+				"foreground": "#9cdcfe"
+			}
+		},
+		{
+			"scope": "constant.numeric.tile8",
+			"settings": {
+				"foreground": "#4fc1ff"
+			}
+		},
+		{
+			"scope": "constant.numeric.tile9",
+			"settings": {
+				"foreground": "#f48771"
+			}
+		}
+	]
+}
+

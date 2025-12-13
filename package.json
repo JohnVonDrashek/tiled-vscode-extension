@@ -1,0 +1,149 @@
+{
+  "name": "tiled-map-viewer",
+  "displayName": "TILED Map Viewer",
+  "description": "View and preview TILED map editor files (.tmx, .json) in VSCode",
+  "version": "0.0.15",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other",
+    "Visualization"
+  ],
+  "activationEvents": [
+    "onCustomEditor:tiledMapViewer.mapViewer",
+    "onLanguage:tmx"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "tmx",
+        "aliases": [
+          "TMX",
+          "Tiled Map XML"
+        ],
+        "extensions": [
+          ".tmx"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "tmx",
+        "scopeName": "text.xml.tmx",
+        "path": "./syntaxes/tmx.tmLanguage.json"
+      }
+    ],
+    "themes": [
+      {
+        "id": "tmx-colors",
+        "label": "TMX Colors",
+        "path": "./themes/tmx-colors.json"
+      }
+    ],
+    "customEditors": [
+      {
+        "viewType": "tiledMapViewer.mapViewer",
+        "displayName": "TILED Map Viewer",
+        "selector": [
+          {
+            "filenamePattern": "*.tmx"
+          },
+          {
+            "filenamePattern": "*.json",
+            "scheme": "file"
+          }
+        ],
+        "priority": "default"
+      }
+    ],
+    "commands": [
+      {
+        "command": "tiledMapViewer.resetZoom",
+        "title": "Reset Zoom",
+        "icon": "$(zoom-out)"
+      },
+      {
+        "command": "tiledMapViewer.openInViewer",
+        "title": "Open in TILED Map Viewer",
+        "icon": "$(layers)"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "tiledMapViewer.openInViewer",
+          "when": "resourceExtname == .tmx || resourceExtname == .json",
+          "group": "navigation"
+        }
+      ],
+      "editor/title": [
+        {
+          "command": "tiledMapViewer.openInViewer",
+          "when": "resourceExtname == .tmx || resourceExtname == .json",
+          "group": "navigation"
+        }
+      ],
+      "editor/title/context": [
+        {
+          "command": "tiledMapViewer.openInViewer",
+          "when": "resourceExtname == .tmx || resourceExtname == .json",
+          "group": "navigation"
+        }
+      ]
+    },
+    "semanticTokenColors": {
+      "tile0": {
+        "foreground": "#808080",
+        "fontStyle": "italic"
+      },
+      "tile1": {
+        "foreground": "#569cd6"
+      },
+      "tile2": {
+        "foreground": "#4ec9b0"
+      },
+      "tile3": {
+        "foreground": "#dcdcaa"
+      },
+      "tile4": {
+        "foreground": "#ce9178"
+      },
+      "tile5": {
+        "foreground": "#d7ba7d"
+      },
+      "tile6": {
+        "foreground": "#c586c0"
+      },
+      "tile7": {
+        "foreground": "#9cdcfe"
+      },
+      "tile8": {
+        "foreground": "#4fc1ff"
+      },
+      "tile9": {
+        "foreground": "#f48771"
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "increment-version": "node -e \"const fs=require('fs');const p=JSON.parse(fs.readFileSync('package.json'));const v=p.version.split('.');v[2]=(parseInt(v[2])+1).toString();p.version=v.join('.');fs.writeFileSync('package.json',JSON.stringify(p,null,2)+'\\n');console.log('Version bumped to',p.version);\"",
+    "package": "npm run compile && npx --yes @vscode/vsce package --allow-missing-repository",
+    "build": "npm run increment-version && npm run package"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.74.0",
+    "@types/xml2js": "^0.4.14",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "xml2js": "^0.6.2"
+  }
+}
