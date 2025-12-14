@@ -3,8 +3,22 @@
   "displayName": "TILED Map Viewer",
   "description": "View and preview TILED map editor files (.tmx) in VSCode",
   "version": "0.0.70",
+  "publisher": "csharp-forge",
   "license": "MIT",
   "icon": "./icons/mini-icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JohnVonDrashek/tiled-vscode-extension.git"
+  },
+  "keywords": [
+    "tiled",
+    "tmx",
+    "map",
+    "editor",
+    "game",
+    "tilemap",
+    "visualization"
+  ],
   "engines": {
     "vscode": "^1.74.0"
   },
@@ -180,7 +194,9 @@
     "watch": "tsc -watch -p ./",
     "increment-version": "node -e \"const fs=require('fs');const p=JSON.parse(fs.readFileSync('package.json'));const v=p.version.split('.');v[2]=(parseInt(v[2])+1).toString();p.version=v.join('.');fs.writeFileSync('package.json',JSON.stringify(p,null,2)+'\\n');console.log('Version bumped to',p.version);\"",
     "package": "npm run compile && npx --yes @vscode/vsce package --allow-missing-repository",
-    "build": "npm run increment-version && npm run package"
+    "build": "npm run increment-version && npm run package",
+    "publish:openvsx": "npm run compile && npx --yes ovsx publish -p $OVSX_TOKEN",
+    "publish:openvsx:vsix": "npx --yes ovsx publish -p $OVSX_TOKEN"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
