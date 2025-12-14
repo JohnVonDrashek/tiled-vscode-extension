@@ -4,9 +4,9 @@ A VSCode extension that provides a visual preview of TILED map editor files (.tm
 
 ## Screenshots
 
-![TILED Map Viewer](screenshots/Screenshot%202025-12-13%20at%208.45.27%20PM.png)
+![TILED Map Viewer](https://raw.githubusercontent.com/JohnVonDrashek/tiled-vscode-extension/main/screenshots/Screenshot%202025-12-13%20at%208.45.27%20PM.png)
 
-![TILED Map Viewer](screenshots/Screenshot%202025-12-13%20at%208.45.39%20PM.png)
+![TILED Map Viewer](https://raw.githubusercontent.com/JohnVonDrashek/tiled-vscode-extension/main/screenshots/Screenshot%202025-12-13%20at%208.45.39%20PM.png)
 
 ## Features
 
