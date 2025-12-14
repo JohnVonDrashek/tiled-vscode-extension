@@ -2,7 +2,7 @@
   "name": "tiled-map-viewer",
   "displayName": "TILED Map Viewer",
   "description": "View and preview TILED map editor files (.tmx) in VSCode",
-  "version": "0.0.70",
+  "version": "0.0.71",
   "publisher": "csharp-forge",
   "license": "MIT",
   "icon": "./icons/mini-icon.png",
