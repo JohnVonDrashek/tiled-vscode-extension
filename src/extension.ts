@@ -1,5 +1,7 @@
 import * as vscode from 'vscode';
 import { TiledMapEditorProvider } from './tiledMapEditor';
+import { registerCompletionProvider } from './tmxCompletion';
+import { registerSemanticTokensProvider } from './tmxSemanticTokens';
 
 const decorationTypes = [
 	vscode.window.createTextEditorDecorationType({ color: '#808080', fontStyle: 'italic' }), // tile0
@@ -18,6 +20,18 @@ export function activate(context: vscode.ExtensionContext) {
 	// Register custom editor provider for TILED map files
 	context.subscriptions.push(
 		TiledMapEditorProvider.register(context)
+	);
+
+	// Register completion provider for TMX files
+	console.log('Registering TMX completion provider');
+	context.subscriptions.push(
+		registerCompletionProvider(context)
+	);
+	console.log('TMX completion provider registered');
+
+	// Register semantic tokens provider for TMX files
+	context.subscriptions.push(
+		registerSemanticTokensProvider(context)
 	);
 
 	// Apply number decorations when TMX files are opened
@@ -56,16 +70,29 @@ export function activate(context: vscode.ExtensionContext) {
 		})
 	);
 
+	// Register command to switch from custom editor to text editor
+	context.subscriptions.push(
+		vscode.commands.registerCommand('tiledMapViewer.showCode', async (uri?: vscode.Uri) => {
+			const fileUri = uri || vscode.window.activeTextEditor?.document.uri;
+			if (fileUri) {
+				// Open as text editor
+				await vscode.commands.executeCommand('vscode.openWith', fileUri, 'default');
+			}
+		})
+	);
+
 	// Register command to open file in custom viewer
 	context.subscriptions.push(
 		vscode.commands.registerCommand('tiledMapViewer.openInViewer', async (uri?: vscode.Uri) => {
 			const fileUri = uri || vscode.window.activeTextEditor?.document.uri;
 			if (fileUri) {
+				// Open with custom editor (both tabs will remain open)
 				await vscode.commands.executeCommand('vscode.openWith', fileUri, 'tiledMapViewer.mapViewer');
 			}
 		})
 	);
 }
+
 
 function updateDecorations(document: vscode.TextDocument) {
 	const text = document.getText();

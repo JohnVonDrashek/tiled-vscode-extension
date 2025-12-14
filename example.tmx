@@ -3,7 +3,7 @@
  <tileset firstgid="1" name="tiles" tilewidth="32" tileheight="32" tilecount="16" columns="4">
   <image source="tiles.png" width="128" height="128"/>
  </tileset>
- <layer id="1" name="Ground" width="10" height="10">
+ <layer id="1" name="Ground" width="10" height="10" visible="0" dsa="sa">
   <data encoding="csv">
 1,1,1,1,1,1,1,1,1,1,
 1,2,2,2,2,2,2,2,2,1,
@@ -44,7 +44,7 @@
 0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0
 </data>
- </layer>
+</layer>
 </map>
 
 

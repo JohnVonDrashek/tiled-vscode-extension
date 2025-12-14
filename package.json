@@ -1,9 +1,10 @@
 {
   "name": "tiled-map-viewer",
   "displayName": "TILED Map Viewer",
-  "description": "View and preview TILED map editor files (.tmx, .json) in VSCode",
-  "version": "0.0.15",
+  "description": "View and preview TILED map editor files (.tmx) in VSCode",
+  "version": "0.0.70",
   "license": "MIT",
+  "icon": "./icons/mini-icon.png",
   "engines": {
     "vscode": "^1.74.0"
   },
@@ -12,6 +13,7 @@
     "Visualization"
   ],
   "activationEvents": [
+    "onStartupFinished",
     "onCustomEditor:tiledMapViewer.mapViewer",
     "onLanguage:tmx"
   ],
@@ -27,7 +29,11 @@
         "extensions": [
           ".tmx"
         ],
-        "configuration": "./language-configuration.json"
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./icons/mini-icon.png",
+          "dark": "./icons/mini-icon.png"
+        }
       }
     ],
     "grammars": [
@@ -51,13 +57,9 @@
         "selector": [
           {
             "filenamePattern": "*.tmx"
-          },
-          {
-            "filenamePattern": "*.json",
-            "scheme": "file"
           }
         ],
-        "priority": "default"
+        "priority": "option"
       }
     ],
     "commands": [
@@ -69,28 +71,64 @@
       {
         "command": "tiledMapViewer.openInViewer",
         "title": "Open in TILED Map Viewer",
-        "icon": "$(layers)"
+        "icon": {
+          "light": "./icons/mini-icon.png",
+          "dark": "./icons/mini-icon.png"
+        }
+      },
+      {
+        "command": "tiledMapViewer.showCode",
+        "title": "Show Code",
+        "icon": "$(code)"
       }
     ],
     "menus": {
       "editor/context": [
         {
           "command": "tiledMapViewer.openInViewer",
-          "when": "resourceExtname == .tmx || resourceExtname == .json",
+          "when": "resourceExtname == .tmx",
           "group": "navigation"
         }
       ],
       "editor/title": [
         {
           "command": "tiledMapViewer.openInViewer",
-          "when": "resourceExtname == .tmx || resourceExtname == .json",
+          "when": "resourceExtname == .tmx",
           "group": "navigation"
         }
       ],
       "editor/title/context": [
         {
           "command": "tiledMapViewer.openInViewer",
-          "when": "resourceExtname == .tmx || resourceExtname == .json",
+          "when": "resourceExtname == .tmx",
+          "group": "navigation"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "tiledMapViewer.openInViewer",
+          "when": "resourceExtname == .tmx",
+          "group": "navigation"
+        }
+      ],
+      "explorer/item": [
+        {
+          "command": "tiledMapViewer.openInViewer",
+          "when": "resourceLangId == tmx || resourceFilename =~ /.*\\.tmx$/",
+          "group": "inline"
+        }
+      ],
+      "webview/context": [
+        {
+          "command": "tiledMapViewer.showCode",
+          "when": "webviewId == 'tiledMapViewer.mapViewer'",
+          "group": "navigation"
+        }
+      ],
+      "webview/title": [
+        {
+          "command": "tiledMapViewer.showCode",
+          "when": "webviewId == 'tiledMapViewer.mapViewer'",
           "group": "navigation"
         }
       ]
@@ -126,6 +164,13 @@
       },
       "tile9": {
         "foreground": "#f48771"
+      },
+      "definedAttribute": {
+        "foreground": "#4ec9b0"
+      },
+      "customAttribute": {
+        "foreground": "#dcdcaa",
+        "fontStyle": "underline"
       }
     }
   },

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <rect x="1" y="1" width="14" height="14" rx="1" fill="#4ec9b0" stroke="#2d7d66" stroke-width="0.5"/>
+  <!-- Grid lines -->
+  <line x1="5" y1="1" x2="5" y2="15" stroke="#2d7d66" stroke-width="0.5"/>
+  <line x1="10" y1="1" x2="10" y2="15" stroke="#2d7d66" stroke-width="0.5"/>
+  <line x1="1" y1="5" x2="15" y2="5" stroke="#2d7d66" stroke-width="0.5"/>
+  <line x1="1" y1="10" x2="15" y2="10" stroke="#2d7d66" stroke-width="0.5"/>
+  <!-- Colored tiles -->
+  <rect x="1" y="1" width="4" height="4" fill="#569cd6"/>
+  <rect x="6" y="1" width="4" height="4" fill="#dcdcaa"/>
+  <rect x="11" y="1" width="4" height="4" fill="#ce9178"/>
+  <rect x="1" y="6" width="4" height="4" fill="#4ec9b0"/>
+  <rect x="6" y="6" width="4" height="4" fill="#c586c0"/>
+  <rect x="11" y="6" width="4" height="4" fill="#f48771"/>
+  <rect x="1" y="11" width="4" height="4" fill="#9cdcfe"/>
+  <rect x="6" y="11" width="4" height="4" fill="#d7ba7d"/>
+  <rect x="11" y="11" width="4" height="4" fill="#4fc1ff"/>
+</svg>
+
+
+

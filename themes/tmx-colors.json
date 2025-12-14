@@ -4,6 +4,49 @@
 	"colors": {},
 	"tokenColors": [
 		{
+			"scope": "meta.tag.xml",
+			"settings": {
+				"foreground": "#569cd6"
+			}
+		},
+		{
+			"scope": "entity.name.tag.xml",
+			"settings": {
+				"foreground": "#4ec9b0"
+			}
+		},
+		{
+			"scope": "entity.other.attribute-name.xml",
+			"settings": {
+				"foreground": "#9cdcfe"
+			}
+		},
+		{
+			"scope": "string.quoted.double.xml",
+			"settings": {
+				"foreground": "#ce9178"
+			}
+		},
+		{
+			"scope": "string.quoted.single.xml",
+			"settings": {
+				"foreground": "#ce9178"
+			}
+		},
+		{
+			"scope": "comment.block.xml",
+			"settings": {
+				"foreground": "#6a9955",
+				"fontStyle": "italic"
+			}
+		},
+		{
+			"scope": "punctuation.separator.comma.csv",
+			"settings": {
+				"foreground": "#d4d4d4"
+			}
+		},
+		{
 			"scope": "constant.numeric.tile0",
 			"settings": {
 				"foreground": "#808080",
@@ -62,6 +105,20 @@
 			"scope": "constant.numeric.tile9",
 			"settings": {
 				"foreground": "#f48771"
+			}
+		},
+		{
+			"scope": "definedAttribute",
+			"settings": {
+				"foreground": "#4ec9b0",
+				"fontStyle": ""
+			}
+		},
+		{
+			"scope": "customAttribute",
+			"settings": {
+				"foreground": "#dcdcaa",
+				"fontStyle": "underline"
 			}
 		}
 	]

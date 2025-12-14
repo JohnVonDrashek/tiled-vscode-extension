@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 import * as path from 'path';
 import * as fs from 'fs';
-import { parseTMX, parseJSON, TiledMap } from './tiledMapParser';
+import { parseTMX, TiledMap } from './tiledMapParser';
 
 export class TiledMapEditorProvider implements vscode.CustomEditorProvider<vscode.CustomDocument> {
 	private readonly _onDidChangeCustomDocument = new vscode.EventEmitter<vscode.CustomDocumentContentChangeEvent<vscode.CustomDocument>>();
@@ -108,10 +108,8 @@ export class TiledMapEditorProvider implements vscode.CustomEditorProvider<vscod
 				try {
 					if (fileExt === '.tmx') {
 						mapData = await parseTMX(content);
-					} else if (fileExt === '.json') {
-						mapData = parseJSON(content);
 					} else {
-						throw new Error(`Unsupported file format: ${fileExt}`);
+						throw new Error(`Unsupported file format: ${fileExt}. Only .tmx files are supported.`);
 					}
 				} catch (error) {
 					const errorMessage = error instanceof Error ? error.message : String(error);

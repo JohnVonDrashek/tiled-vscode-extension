@@ -3,33 +3,10 @@
 	"name": "TMX",
 	"patterns": [
 		{
-			"include": "#csv-data"
-		},
-		{
 			"include": "#xml"
 		}
 	],
 	"repository": {
-		"csv-data": {
-			"begin": "<data[^>]*encoding\\s*=\\s*[\"']csv[\"'][^>]*>",
-			"beginCaptures": {
-				"0": {
-					"name": "meta.tag.xml"
-				}
-			},
-			"end": "</data>",
-			"endCaptures": {
-				"0": {
-					"name": "meta.tag.xml"
-				}
-			},
-			"patterns": [
-				{
-					"match": ",",
-					"name": "punctuation.separator.comma.csv"
-				}
-			]
-		},
 		"xml": {
 			"patterns": [
 				{
@@ -43,13 +20,22 @@
 					"name": "comment.block.xml"
 				},
 				{
-					"begin": "<(?!data[^>]*encoding\\s*=\\s*[\"']csv[\"'])",
+					"match": "</[a-zA-Z]+>",
+					"name": "meta.tag.xml"
+				},
+				{
+					"begin": "<([a-zA-Z][a-zA-Z0-9-]*)",
+					"beginCaptures": {
+						"1": {
+							"name": "entity.name.tag.xml"
+						}
+					},
 					"end": ">",
 					"name": "meta.tag.xml",
 					"patterns": [
 						{
 							"match": "\\b([a-zA-Z][a-zA-Z0-9-]*)\\s*=",
-							"name": "entity.name.attribute.xml"
+							"name": "entity.other.attribute-name.xml"
 						},
 						{
 							"match": "\"[^\"]*\"",
@@ -66,4 +52,3 @@
 	},
 	"scopeName": "text.xml.tmx"
 }
-
