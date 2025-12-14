@@ -5,10 +5,10 @@ A VSCode extension that provides a visual preview of TILED map editor files (.tm
 ## Screenshots
 
 ### Text Editor View
-![Text Editor View](https://raw.githubusercontent.com/JohnVonDrashek/tiled-vscode-extension/main/screenshots/screenshot-text-view.png)
+![Text Editor View](screenshots/screenshot-text-view.png)
 
 ### Custom Map Viewer
-![Custom Map Viewer](https://raw.githubusercontent.com/JohnVonDrashek/tiled-vscode-extension/main/screenshots/screenshot-custom-view.png)
+![Custom Map Viewer](screenshots/screenshot-custom-view.png)
 
 ## Features
 
